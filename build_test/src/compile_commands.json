@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/user/ros2_ws/src/build_test/src",
+  "command": "/usr/bin/c++    -o CMakeFiles/first.dir/first.cpp.o -c /home/user/ros2_ws/src/build_test/src/first.cpp",
+  "file": "/home/user/ros2_ws/src/build_test/src/first.cpp"
+},
+{
+  "directory": "/home/user/ros2_ws/src/build_test/src",
+  "command": "/usr/bin/c++    -o CMakeFiles/main.dir/main.cpp.o -c /home/user/ros2_ws/src/build_test/src/main.cpp",
+  "file": "/home/user/ros2_ws/src/build_test/src/main.cpp"
+}
+]
