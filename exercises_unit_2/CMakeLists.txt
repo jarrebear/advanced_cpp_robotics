@@ -15,6 +15,7 @@ add_executable(robot_position_array_executable src/robot_position_as_array.cpp)
 add_executable(robot_heading_vector_executable src/robot_heading_as_vector.cpp)
 add_executable(robot_heading_deque_executable src/robot_heading_as_deque.cpp)
 add_executable(path_coordinates_executable src/path_coordinates.cpp)
+add_executable(path_coordinates_map_executable src/path_coordinates_map.cpp)
 
 # Add dependencies
 ament_target_dependencies(robot_position_array_executable
@@ -37,12 +38,18 @@ ament_target_dependencies(path_coordinates_executable
   robot_commander
 )
 
+ament_target_dependencies(path_coordinates_map_executable
+  rclcpp
+  robot_commander
+)
+
 # Install executables
 install(TARGETS
   robot_position_array_executable
   robot_heading_vector_executable
   robot_heading_deque_executable
   path_coordinates_executable
+  path_coordinates_map_executable
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
