@@ -8,6 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 # Include directories
 include_directories(include)
@@ -26,11 +27,15 @@ target_link_libraries(robot_manager_node
 )
 
 # Add dependencies
-ament_target_dependencies(robot_manager_node rclcpp)
+ament_target_dependencies(robot_manager_node
+  rclcpp
+  nav_msgs
+  )
 
 # Link dependencies
 ament_target_dependencies(${PROJECT_NAME}
   rclcpp
+  nav_msgs
 )
 
 # Export include directories
@@ -63,6 +68,6 @@ install(
 # Export package dependencies
 ament_export_targets(export_my_robot_manager HAS_LIBRARY_TARGET)
 ament_export_include_directories(include)
-ament_export_dependencies(rclcpp)
+ament_export_dependencies(rclcpp nav_msgs)
 
 ament_package()

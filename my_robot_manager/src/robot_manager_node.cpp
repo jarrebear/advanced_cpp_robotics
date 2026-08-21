@@ -4,8 +4,10 @@ int main(int argc, char **argv) {
   // initialize Ros2 comms
   rclcpp::init(argc, argv);
 
-  RobotManager robot;
-  robot.robot_name = "my_robot";
-  robot.robot_model = "TurtleBot3";
-  robot.print_specifications();
+  std::shared_ptr<RobotManager> robot;
+  robot =
+      std::make_shared<RobotManager>("/fastbot_1/odom", "fastbot_1", "FastBot");
+  robot->print_specifications();
+
+  rclcpp::spin(robot);
 }
