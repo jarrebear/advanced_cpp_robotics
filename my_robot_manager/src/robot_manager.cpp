@@ -2,12 +2,14 @@
 
 RobotManager::RobotManager(const std::string topic, const std::string name,
                            const std::string model)
-    : Node("robot_manager_node"), odometry_topic(topic), robot_name(name),
-      robot_model(model) {
+    : Node("robot_manager_node_" + name), odometry_topic(topic),
+      robot_name(name), robot_model(model) {
 
   odom_subscriber = this->create_subscription<nav_msgs::msg::Odometry>(
       odometry_topic, 1000,
       std::bind(&RobotManager::odom_callback, this, std::placeholders::_1));
+  robot_count++;
+  RCLCPP_INFO(this->get_logger(), "Robot %i created.", robot_count);
 }
 
 void RobotManager::print_specifications() {

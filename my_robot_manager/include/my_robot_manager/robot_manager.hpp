@@ -8,6 +8,7 @@
 
 class RobotManager : public rclcpp::Node {
 public:
+  static int robot_count;
   RobotManager(const std::string topic, const std::string name,
                const std::string model);
   void print_specifications();
