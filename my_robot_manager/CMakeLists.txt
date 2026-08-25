@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 
 # Include directories
 include_directories(include)
@@ -30,12 +31,14 @@ target_link_libraries(robot_manager_node
 ament_target_dependencies(robot_manager_node
   rclcpp
   nav_msgs
+  std_srvs
   )
 
 # Link dependencies
 ament_target_dependencies(${PROJECT_NAME}
   rclcpp
   nav_msgs
+  std_srvs
 )
 
 # Export include directories

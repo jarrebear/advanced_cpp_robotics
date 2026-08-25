@@ -10,18 +10,15 @@ int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
 
   std::shared_ptr<RobotManager> robot_1;
-  robot_1 =
-      std::make_shared<RobotManager>("/fastbot_1/odom", "fastbot_1", "FastBot");
+  robot_1 = std::make_shared<RobotManager>("odom", "fastbot_1", "FastBot");
   robot_1->print_specifications();
 
   std::shared_ptr<RobotManager> robot_2;
-  robot_2 =
-      std::make_shared<RobotManager>("/fastbot_1/odom", "fastbot_2", "FastBot");
+  robot_2 = std::make_shared<RobotManager>("odom", "fastbot_2", "FastBot");
   robot_2->print_specifications();
 
   std::shared_ptr<RobotManager> robot_3;
-  robot_3 =
-      std::make_shared<RobotManager>("/fastbot_1/odom", "fastbot_3", "FastBot");
+  robot_3 = std::make_shared<RobotManager>("odom", "fastbot_3", "FastBot");
   robot_3->print_specifications();
 
   rclcpp::executors::SingleThreadedExecutor executor;
