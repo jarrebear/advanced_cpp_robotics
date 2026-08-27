@@ -68,6 +68,7 @@ add_executable(robot_manager_composition_node
 
 target_link_libraries(robot_manager_composition_node
   robot_manager_composition
+  system_information
 )
 
 ament_target_dependencies(robot_manager_composition_node
