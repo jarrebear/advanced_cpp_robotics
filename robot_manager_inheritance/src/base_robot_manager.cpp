@@ -19,6 +19,8 @@ void RobotManagerBase::ConfigOutputCallback(
     std::shared_ptr<std_srvs::srv::SetBool::Response> response) {
   bool requested_output = request->data;
 
+  displayRobotDetails();
+
   // Check if the requested configuration matches the current configuration
   if (requested_output == output_enabled) {
     response->success = false;
@@ -41,4 +43,10 @@ void RobotManagerBase::ConfigOutputCallback(
     RCLCPP_INFO(node_ptr->get_logger(),
                 "Robot Manager console output enabled.");
   }
+}
+
+void RobotManagerBase::displayRobotDetails() {
+  RCLCPP_INFO(node_ptr->get_logger(), "Robot Name: %s", robot_name.c_str());
+  RCLCPP_INFO(node_ptr->get_logger(), "Robot Location: %s",
+              robot_location.c_str());
 }

@@ -9,11 +9,14 @@
 class RobotManagerBase {
 public:
   explicit RobotManagerBase(const rclcpp::Node::SharedPtr &node);
+  virtual void displayRobotDetails();
 
 protected:
   rclcpp::Node::SharedPtr node_ptr;
   bool output_enabled{false};
   void init_config_output_srv();
+  std::string robot_name{"fastbot"};
+  std::string robot_location{"Warehouse"};
 
 private:
   void ConfigOutputCallback(

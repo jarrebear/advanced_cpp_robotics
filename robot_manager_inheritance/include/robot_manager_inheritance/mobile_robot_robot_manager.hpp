@@ -6,6 +6,11 @@
 class RobotManagerMobile : public RobotManagerBase {
 public:
   explicit RobotManagerMobile(const rclcpp::Node::SharedPtr &node);
+  void displayRobotDetails();
+
+private:
+  float battery_charge_level{0.55f};
+  std::string type_of_batttery{"Lead acid batteries"};
 };
 
 #endif
