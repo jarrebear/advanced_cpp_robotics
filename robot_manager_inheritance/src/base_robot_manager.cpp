@@ -45,8 +45,8 @@ void RobotManagerBase::ConfigOutputCallback(
   }
 }
 
-void RobotManagerBase::displayRobotDetails() {
-  RCLCPP_INFO(node_ptr->get_logger(), "Robot Name: %s", robot_name.c_str());
-  RCLCPP_INFO(node_ptr->get_logger(), "Robot Location: %s",
-              robot_location.c_str());
-}
+// void RobotManagerBase::displayRobotDetails() {
+//   RCLCPP_INFO(node_ptr->get_logger(), "Robot Name: %s", robot_name.c_str());
+//   RCLCPP_INFO(node_ptr->get_logger(), "Robot Location: %s",
+//               robot_location.c_str());
+// }

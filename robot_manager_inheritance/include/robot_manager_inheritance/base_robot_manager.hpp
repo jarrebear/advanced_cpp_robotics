@@ -9,7 +9,7 @@
 class RobotManagerBase {
 public:
   explicit RobotManagerBase(const rclcpp::Node::SharedPtr &node);
-  virtual void displayRobotDetails();
+  virtual void displayRobotDetails() = 0;
 
 protected:
   rclcpp::Node::SharedPtr node_ptr;

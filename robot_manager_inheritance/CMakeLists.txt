@@ -57,28 +57,37 @@ ament_target_dependencies(mobile_robot_robot_manager
 # Executable
 ##################################################
 
-add_executable(base_robot_manager_node
-  src/base_robot_manager_node.cpp
-)
+# add_executable(base_robot_manager_node
+#   src/base_robot_manager_node.cpp
+# )
 
-target_link_libraries(base_robot_manager_node
-  base_robot_manager
-)
+# target_link_libraries(base_robot_manager_node
+#   base_robot_manager
+# )
 
-ament_target_dependencies(base_robot_manager_node
-  rclcpp
-  std_srvs
-)
+# ament_target_dependencies(base_robot_manager_node
+#   rclcpp
+#   std_srvs
+# )
 
 install(
   TARGETS
 	base_robot_manager
-	base_robot_manager_node
   EXPORT export_base_robot_manager
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
+
+# install(
+#   TARGETS
+# 	base_robot_manager
+# 	base_robot_manager_node
+#   EXPORT export_base_robot_manager
+#   ARCHIVE DESTINATION lib
+#   LIBRARY DESTINATION lib
+#   RUNTIME DESTINATION lib/${PROJECT_NAME}
+# )
 
 
 add_executable(mobile_robot_robot_manager_node
