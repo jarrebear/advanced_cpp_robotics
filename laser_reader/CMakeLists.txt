@@ -37,6 +37,19 @@ install(
   DESTINATION include
 )
 
+# Create executable
+add_executable(laser_subscriber src/laser_subscriber.cpp)
+
+# Add dependencies
+ament_target_dependencies(laser_subscriber
+  rclcpp
+  sensor_msgs
+  )
+
+# Install executables
+install(TARGETS
+  laser_subscriber
+  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

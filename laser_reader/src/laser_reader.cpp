@@ -64,6 +64,8 @@ void LaserReaderClass::laser_callback(
       std::cout << "Scan " << i << ": " << last_ten_scans[i][25] << "\n";
   }
 
+  // keep track of number of scans to only print after last_ten_scans has been
+  // populated
   scan_count_++;
 }
 
