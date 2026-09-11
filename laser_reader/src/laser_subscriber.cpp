@@ -1,3 +1,5 @@
+#include <cmath>
+#include <limits>
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
@@ -21,8 +23,26 @@ private:
     if (!laser_scan_->ranges.empty()) {
       float range = laser_scan_->ranges[25];
 
-      RCLCPP_INFO(this->get_logger(), "Range: %f", range);
+      //   RCLCPP_INFO(this->get_logger(), "Range: %f", range);
     }
+
+    printClosestObstacleDistance(msg);
+  }
+
+  void printClosestObstacleDistance(
+      const sensor_msgs::msg::LaserScan::SharedPtr msg) {
+    float closest_dist = std::numeric_limits<float>::infinity();
+    float angle = std::numeric_limits<float>::infinity();
+
+    for (size_t i = 0; i < msg->ranges.size(); i++) {
+      if (closest_dist > msg->ranges[i]) {
+        closest_dist = msg->ranges[i];
+        angle = msg->angle_min + msg->angle_increment * i;
+      }
+    }
+
+    std::cout << "Closest obstacle distance: " << closest_dist
+              << ", Angle (rad): " << angle << "\n";
   }
 
   // Store the received LaserScan message
