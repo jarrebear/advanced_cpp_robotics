@@ -65,6 +65,14 @@ ament_target_dependencies(main_topic_subscriber_class
   sensor_msgs
 )
 
+add_executable(main_pcl_topic_subscriber
+  src/main_pcl_topic_subscriber.cpp
+)
+
+ament_target_dependencies(main_pcl_topic_subscriber
+  rclcpp
+  sensor_msgs
+)
 
 ##############################################################################
 # Install Header Files
@@ -105,6 +113,12 @@ install(TARGETS
 
 install(TARGETS
   main_topic_subscriber_class
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
+install(TARGETS
+  main_pcl_topic_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
 
