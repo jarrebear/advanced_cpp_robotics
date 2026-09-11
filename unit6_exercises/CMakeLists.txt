@@ -11,6 +11,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 ##############################################################################
 # Library: magic_printer
@@ -46,6 +47,25 @@ ament_target_dependencies(main_magic_printer_node
   rclcpp
 )
 
+add_executable(main_topic_subscriber_function
+  src/main_topic_subscriber_function.cpp
+)
+
+ament_target_dependencies(main_topic_subscriber_function
+  rclcpp
+  sensor_msgs
+)
+
+add_executable(main_topic_subscriber_class
+  src/main_topic_subscriber_class.cpp
+)
+
+ament_target_dependencies(main_topic_subscriber_class
+  rclcpp
+  sensor_msgs
+)
+
+
 ##############################################################################
 # Install Header Files
 ##############################################################################
@@ -77,6 +97,17 @@ install(
     main_magic_printer_node
     DESTINATION lib/${PROJECT_NAME}
 )
+
+install(TARGETS
+  main_topic_subscriber_function
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  main_topic_subscriber_class
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 
 ##############################################################################
 # Export
