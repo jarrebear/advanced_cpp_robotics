@@ -32,6 +32,26 @@ ament_target_dependencies(magic_printer
 )
 
 ##############################################################################
+# Library: specialized_example
+##############################################################################
+
+add_library(specialised_example SHARED
+  src/specialised_example.cpp
+)
+
+target_include_directories(specialised_example
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+ament_target_dependencies(specialised_example
+  rclcpp
+  sensor_msgs
+)
+
+
+##############################################################################
 # Executable: main_magic_printer_node
 ##############################################################################
 
@@ -74,6 +94,39 @@ ament_target_dependencies(main_pcl_topic_subscriber
   sensor_msgs
 )
 
+add_executable(basic_example_u6_specialization_node
+  src/basic_example_u6_specialization.cpp
+)
+
+ament_target_dependencies(basic_example_u6_specialization_node
+  rclcpp
+)
+
+add_executable(basic_example_u6_specialization_functions_node
+  src/basic_example_u6_specialization_functions.cpp
+)
+
+ament_target_dependencies(basic_example_u6_specialization_functions_node
+  rclcpp
+)
+
+##############################################################################
+# Executable: main_specialised_example_node
+##############################################################################
+
+add_executable(main_specialised_example_node
+  src/main_specialised_example.cpp
+)
+
+target_link_libraries(main_specialised_example_node
+  specialised_example
+)
+
+ament_target_dependencies(main_specialised_example_node
+  rclcpp
+  sensor_msgs
+)
+
 ##############################################################################
 # Install Header Files
 ##############################################################################
@@ -90,6 +143,7 @@ install(
 install(
   TARGETS
     magic_printer
+	specialised_example
     EXPORT export_${PROJECT_NAME}
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
@@ -103,6 +157,7 @@ install(
 install(
   TARGETS
     main_magic_printer_node
+	main_specialised_example_node
     DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -122,6 +177,12 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+install(
+  TARGETS
+    basic_example_u6_specialization_node
+	basic_example_u6_specialization_functions_node
+    DESTINATION lib/${PROJECT_NAME}
+)
 
 ##############################################################################
 # Export
