@@ -1,0 +1,1 @@
+#include "specialized_edge_detector/magic_subscriber_image_edgedetector.hpp"
