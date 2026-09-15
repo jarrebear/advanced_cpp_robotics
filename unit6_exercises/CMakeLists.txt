@@ -128,6 +128,19 @@ ament_target_dependencies(main_specialised_example_node
 )
 
 ##############################################################################
+# Executable: lambda_basics
+#####################################################
+
+add_executable(lambda_basics_node
+  src/lambda_basics.cpp
+)
+
+ament_target_dependencies(lambda_basics_node
+  rclcpp
+)
+
+
+##############################################################################
 # Install Header Files
 ##############################################################################
 
@@ -181,6 +194,7 @@ install(
   TARGETS
     basic_example_u6_specialization_node
 	basic_example_u6_specialization_functions_node
+	lambda_basics_node
     DESTINATION lib/${PROJECT_NAME}
 )
 
